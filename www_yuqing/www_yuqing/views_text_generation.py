@@ -15,7 +15,7 @@ def get_all_events(request):
     data=[]
     try:
         topic_ids = [12,13,15,17,21,23]
-        conn = connector.connect(host='202.117.43.191',port="3306", user="root",password="snort",database="yuqing",charset="utf8")
+        conn = connector.connect(host='',port="", user="",password="",database="",charset="utf8")
         cursor = conn.cursor()
         # sql = "select topicId,name,description,img from topicinfo where topicId in (12,13,15,17,21,23)"
         sql = "select topicId,name,description,img from topicinfo where display = 1"
@@ -49,8 +49,7 @@ def get_all_aspect(request):
     count = int(request.GET['count'])
     # print '111'
     try:
-        conn = connector.connect(host='202.117.43.191',port="3306", user="root", password="snort", database="yuqing",
-                                 charset="utf8")
+        conn = connector.connect(host='',port="", user="",password="",database="",charset="utf8")
         cursor = conn.cursor()
         sql = "select aspectinfo.aspectId,aspectinfo.name,posNum,neuNum,negNum,text1,text2,text3 " \
               "from aspectinfo,aspect_text where aspectinfo.aspectId = aspect_text.aspectId and aspectinfo.topicId = " + str(event_id)
@@ -104,8 +103,7 @@ def text_generate(request):
     aspect_id = request.GET['aspect_id']
     # print '111'
     try:
-        conn = connector.connect(host='202.117.43.191', port="3306", user="root", password="snort", database="yuqing",
-                                 charset="utf8")
+        conn = connector.connect(host='',port="", user="",password="",database="",charset="utf8")
         cursor = conn.cursor()
         sql = "select aspectinfo.aspectId,name,topicId,direction,text from aspectinfo,aspect_generate_text " \
               "where aspectinfo.aspectId = aspect_generate_text.aspectId and direction = " + str(direction) + \
@@ -141,8 +139,7 @@ def text_publish(request):
     print(text)
     # print '111'
     try:
-        conn = connector.connect(host='202.117.43.191', port="3306", user="root", password="snort",
-                                 database="yuqing",charset="utf8")
+        conn = connector.connect(host='',port="", user="",password="",database="",charset="utf8")
         cursor = conn.cursor()
         sql = "select username,password,sub from cookie"
         cursor.execute(sql)
